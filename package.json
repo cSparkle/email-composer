@@ -23,8 +23,11 @@
     "@ionic/prettier-config": "^1.0.0",
     "@ionic/swiftlint-config": "^1.0.0",
     "@rollup/plugin-node-resolve": "^8.1.0",
-    "prettier": "^2.0.5",
-    "prettier-plugin-java": "^0.8.0",
+    "husky": "^4.3.0",
+    "np": "^7.0.0",
+    "prettier": "^2.1.2",
+    "prettier-plugin-java": "^0.8.3",
+    "pretty-quick": "^3.1.0",
     "rimraf": "^3.0.0",
     "rollup": "^2.21.0",
     "swiftlint": "^1.0.1",
@@ -53,6 +56,11 @@
     }
   },
   "prettier": "@ionic/prettier-config",
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  },
   "swiftlint": "@ionic/swiftlint-config",
   "repository": {
     "type": "git",
