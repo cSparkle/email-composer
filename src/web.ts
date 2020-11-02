@@ -9,9 +9,15 @@ export class EmailComposerWeb extends WebPlugin implements EmailComposerPlugin {
     });
   }
 
-  async echo(options: { value: string }): Promise<{ value: string }> {
-    console.log('ECHO', options);
-    return options;
+  async openEmail(options: {
+    to: string;
+    from: string;
+    subject: string;
+    body: string;
+  }) {
+    // TODO implement web version
+    console.log('open email values are: ', options);
+    return { value: 'success' };
   }
 }
 
