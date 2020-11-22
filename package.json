@@ -5,6 +5,10 @@
   "main": "dist/plugin.js",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:cSparkle/email-composer.git"
+  },
   "scripts": {
     "lint": "npm run prettier -- --check && npm run swiftlint -- lint",
     "prettier": "prettier \"**/*.{css,html,ts,js,java}\"",
@@ -62,10 +66,6 @@
     }
   },
   "swiftlint": "@ionic/swiftlint-config",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:cSparkle/email-composer.git"
-  },
   "bugs": {
     "url": "git@github.com:cSparkle/email-composer.git/issues"
   }

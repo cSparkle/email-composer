@@ -7,7 +7,7 @@ import MessageUI.MFMailComposeViewController
  * here: https://capacitorjs.com/docs/plugins/ios
  */
 @objc(EmailComposer)
-public class EmailComposer: CAPPlugin {
+public class EmailComposer: CAPPlugin, MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
 
     @objc func mailAvailable() -> Bool {
         return MFMailComposeViewController.canSendMail()
@@ -27,14 +27,18 @@ public class EmailComposer: CAPPlugin {
         let body = call.getString("body") ?? ""
         
         
-        let composeViewController = MFMailComposeViewController()
-        composeViewController.mailComposeDelegate = self as? MFMailComposeViewControllerDelegate
+        let draft = MFMailComposeViewController()
+        draft.mailComposeDelegate = self;
         
-        composeViewController.setToRecipients([to])
-        composeViewController.setSubject(subject)
-        composeViewController.setMessageBody(body, isHTML: false)
+        draft.setToRecipients([to])
+        draft.setSubject(subject)
+        draft.setMessageBody(body, isHTML: false)
         DispatchQueue.main.async {
-            self.bridge.viewController.present(composeViewController, animated: true, completion: nil)
+            self.bridge.viewController.present(draft, animated: true, completion: nil)
         }
+    }
+    
+    public func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
     }
 }
