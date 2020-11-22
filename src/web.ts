@@ -10,7 +10,7 @@ export class EmailComposerWeb extends WebPlugin implements EmailComposerPlugin {
   }
 
   async openEmail(options: {
-    to: string;
+    to: string[];
     from: string;
     subject: string;
     body: string;

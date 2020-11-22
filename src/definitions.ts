@@ -6,7 +6,7 @@ declare module '@capacitor/core' {
 
 export interface EmailComposerPlugin {
   openEmail(options: {
-    to: string;
+    to: string[];
     from: string;
     subject: string;
     body: string;

@@ -22,7 +22,7 @@ public class EmailComposer: CAPPlugin, MFMailComposeViewControllerDelegate, UINa
     }
     
     @objc func openViewController(_ call: CAPPluginCall) {
-        let to = call.getString("to") ?? ""
+        let recipients = call.getArray("to", String.self) ?? []
         let subject = call.getString("subject") ?? ""
         let body = call.getString("body") ?? ""
         
@@ -30,7 +30,7 @@ public class EmailComposer: CAPPlugin, MFMailComposeViewControllerDelegate, UINa
         let draft = MFMailComposeViewController()
         draft.mailComposeDelegate = self;
         
-        draft.setToRecipients([to])
+        draft.setToRecipients(recipients)
         draft.setSubject(subject)
         draft.setMessageBody(body, isHTML: false)
         DispatchQueue.main.async {
