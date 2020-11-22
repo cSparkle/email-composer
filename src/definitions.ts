@@ -5,5 +5,10 @@ declare module '@capacitor/core' {
 }
 
 export interface EmailComposerPlugin {
-  echo(options: { value: string }): Promise<{ value: string }>;
+  openEmail(options: {
+    to: string;
+    from: string;
+    subject: string;
+    body: string;
+  }): Promise<{ value: string }>;
 }
